@@ -13,6 +13,11 @@ public class Utils {
     }
     public static Stream<String> forEachLinesFromFile(String filePath) throws IOException, URISyntaxException {
         Path path = Path.of(Objects.requireNonNull(Utils.class.getClassLoader().getResource(filePath)).toURI());
-        return Files.readAllLines(path).stream();
+        return Files.lines(path);
+    }
+
+    public static long countLinesFromFile(String filePath) throws IOException, URISyntaxException {
+        Path path = Path.of(Objects.requireNonNull(Utils.class.getClassLoader().getResource(filePath)).toURI());
+        return Files.lines(path).count();
     }
 }
